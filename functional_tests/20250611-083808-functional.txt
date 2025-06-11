@@ -1,0 +1,136 @@
+## **Test Scenarios for User Story ZBIO-4826: Extend Functional Test Support**
+
+---
+
+### **Functional Test Cases**
+
+1. **Test Case ID:** TC_FT_001  
+   **Test Name:** Verify functionality when user provides valid input for `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Launch the application.  
+     2. Set `board_type` to `'none'`.  
+     3. Provide valid input in the prompt input field.  
+   - **Input:** Set `board_type` = `'none'` and enter `"JIRA-1234"`.  
+   - **Expected Output:** The system should successfully accept and process the input.  
+   - **Edge Case:** Input a very long valid string (e.g., 255 characters) and check if the system handles it gracefully.
+
+2. **Test Case ID:** TC_FT_002  
+   **Test Name:** Verify behavior when no user input is provided for `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Launch the application.  
+     2. Set `board_type` to `'none'`.  
+     3. Leave the input field empty and attempt to proceed.  
+   - **Input:** Set `board_type` = `'none'` with no input provided.  
+   - **Expected Output:** The system should display an appropriate error message prompting the user to provide input.  
+
+3. **Test Case ID:** TC_FT_003  
+   **Test Name:** Verify system validation for invalid or special character input when `board_type` is `'none'`.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'none'`.  
+     2. Enter invalid or special characters like `@#*&!` in the input field.  
+   - **Input:** Set `board_type` = `'none'` and input `@#*&!`.  
+   - **Expected Output:** The system should reject the input and display a validation error.  
+
+4. **Test Case ID:** TC_FT_004  
+   **Test Name:** Verify system behavior when `board_type != 'none'`.  
+   - **Test Steps:**  
+     1. Launch the application.  
+     2. Set `board_type` to a value other than `'none'` (e.g., `"basic"`).  
+   - **Input:** Set `board_type` = `"basic"`.  
+   - **Expected Output:** The system should not prompt for additional input and should proceed as normal. 
+
+5. **Test Case ID:** TC_FT_005  
+   **Test Name:** Verify the behavior when a valid `board_type` is changed to `'none'`.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'basic'`.  
+     2. Change it to `'none'`.  
+     3. Provide required user input.  
+   - **Input:** Input sequence: Initial `board_type = "basic"` > Change to `board_type = "none"` > Provide input "JIRA-5678".  
+   - **Expected Output:** The system should prompt for user input immediately upon changing `board_type` to `'none'`.
+
+---
+
+### **Non-Functional Test Cases**
+
+1. **Test Case ID:** TC_NFT_001  
+   **Test Name:** Verify system response time for valid user input when `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'none'`.  
+     2. Provide valid input, e.g., `"JIRA-1234"`.  
+   - **Input:** `board_type = 'none'`, user input = `"JIRA-1234"`.  
+   - **Expected Output:** The system should accept and process the input within 2 seconds.  
+
+2. **Test Case ID:** TC_NFT_002  
+   **Test Name:** Verify user interface design and readability of the input field when `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'none'`.  
+     2. Observe visual aspects, such as input field alignment and font size.  
+   - **Input:** N/A (UI evaluation).  
+   - **Expected Output:** The input field should be visually clear, responsive, and free from any UI glitches.
+
+3. **Test Case ID:** TC_NFT_003  
+   **Test Name:** Check system performance under heavy user load with `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Simulate multiple users setting `board_type` to `'none'` simultaneously.  
+     2. Users provide input concurrently (e.g., 100 users entering data).  
+   - **Input:** Concurrent user scenarios with `board_type = 'none'`, each providing valid input.  
+   - **Expected Output:** The system should handle high traffic efficiently without performance degradation or errors.
+
+4. **Test Case ID:** TC_NFT_004  
+   **Test Name:** Validate resilience to invalid data during user input for `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Simulate multiple users entering invalid data simultaneously (e.g., `"@#123"`).  
+   - **Input:** Inputs such as `"@#123", ""`, or an excessively long string.  
+   - **Expected Output:** The system should handle invalid inputs gracefully without crashing or affecting other users.  
+
+5. **Test Case ID:** TC_NFT_005  
+   **Test Name:** Verify maximum character limit for the input field when `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'none'`.  
+     2. Enter a string exceeding the maximum allowed character limit (e.g., 300 characters).  
+   - **Input:** A string of 300 characters.  
+   - **Expected Output:** The system should restrict input to the maximum allowable length and show an error beyond that.
+
+6. **Test Case ID:** TC_NFT_006  
+   **Test Name:** Test security features of the input field for vulnerabilities like SQL Injection.  
+   - **Test Steps:**  
+     1. Set `board_type` to `'none'`.  
+     2. Input SQL commands like `"DROP TABLE users;"` or `"SELECT * FROM users;"`.  
+   - **Input:** `"DROP TABLE users;"`.  
+   - **Expected Output:** The system should prevent SQL Injection and escape special characters.
+
+7. **Test Case ID:** TC_NFT_007  
+   **Test Name:** Verify accessibility compliance for input fields when `board_type = 'none'`.  
+   - **Test Steps:**  
+     1. Test with screen readers and keyboard inputs for accessibility.  
+   - **Input:** Use tools like NVDA or JAWS to test accessibility.  
+   - **Expected Output:** The input field should be fully accessible for users with disabilities.
+
+---
+
+### **Subtask ZBIO-4833: Extend Functional Test Support for UI**
+
+1. **Functional Test Cases:**
+   - Verify the input box to accept comma-separated JIRA IDs.  
+     - **Input:** `"JIRA-1234, JIRA-5678"`.  
+     - **Expected Output:** The system stores and displays a list of provided JIRA IDs.  
+
+   - Verify that the input field cannot remain empty when `board_type = 'none'`.  
+     - **Input:** Leave the input blank and try to proceed.  
+     - **Expected Output:** Appropriate error messages are displayed for empty input.  
+
+2. **Non-Functional Test Cases:**
+   - Validate user interface for readability and alignment of the input box for JIRA IDs.  
+   - Test handling of multiple JIRA ID entries under heavy load conditions.  
+
+---
+
+### **Edge Cases**
+- Providing empty strings, only whitespace, or special characters.  
+- Changing `board_type` back and forth between valid values and `'none'`.  
+- Testing limits for the maximum length and volume of inputs.  
+- Simulating unexpected application crashes during data input.  
+
+--- 
+
+These test scenarios aim to ensure the reliability, usability, and robustness of the feature concerning `board_type` functionality and input handling.

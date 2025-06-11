@@ -1,0 +1,12 @@
+Verify functionality when user provides valid input for "board_type = 'none'"
+Verify behavior when no user input is provided for "board_type = 'none'"
+Verify system validation for invalid or special character input when "board_type = 'none'"
+Verify system behavior when "board_type != 'none'"
+Verify behavior when a valid "board_type" is changed to 'none'
+Verify system response time for valid user input when "board_type = 'none'"
+Verify resilience to invalid data during user input for "board_type = 'none'"
+Verify maximum character limit for the input field when "board_type = 'none'"
+Test security features of the input field for vulnerabilities like SQL Injection
+Verify accessibility compliance for input fields when "board_type = 'none'"
+Verify the input box to accept comma-separated JIRA IDs
+Verify handling of multiple JIRA ID entries under heavy load conditions
